@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfe-marketing-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mfe-marketing
+  template:
+    metadata:
+      labels:
+        app: mfe-marketing
+    spec:
+      containers:
+        - name: mfe-marketing
+          image: romitgandhi/mfe-marketing
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfe-marketing-srv
+spec:
+  selector:
+    app: mfe-marketing
+  ports:
+    - name: mfe-marketing
+      protocol: TCP
+      port: 8081
+      targetPort: 8081

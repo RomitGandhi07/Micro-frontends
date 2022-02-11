@@ -11,6 +11,9 @@ const prodConfig = {
   output: {
     filename: "[name].[contenthash].js",
   },
+  devServer: {
+    port: 8081
+},
   plugins: [
     new ModuleFederationPlugin({
         name: 'marketing',

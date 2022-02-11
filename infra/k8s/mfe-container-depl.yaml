@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mfe-container-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mfe-container
+  template:
+    metadata:
+      labels:
+        app: mfe-container
+    spec:
+      containers:
+        - name: mfe-container
+          image: romitgandhi/mfe-container
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mfe-container-srv
+spec:
+  type: LoadBalancer
+  selector:
+    app: mfe-container
+  ports:
+    - name: mfe-container
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
