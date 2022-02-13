@@ -19,12 +19,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mfe-marketing-srv
+  name: mfe-marketing-service
 spec:
   selector:
     app: mfe-marketing
   ports:
     - name: mfe-marketing
       protocol: TCP
-      port: 8081
-      targetPort: 8081
+      port: 4001
+      targetPort: 4001
